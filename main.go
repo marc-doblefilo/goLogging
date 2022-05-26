@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/marc-doblefilo/Logging/logging"
+	"github.com/marc-doblefilo/goLogging/logging"
 )
 
 func main() {
