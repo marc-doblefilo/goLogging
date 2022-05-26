@@ -10,6 +10,13 @@ var INFO = "INFO"
 var WARN = "WARN"
 var ERROR = "ERROR"
 
+var debugLevel = 0
+var infoLevel = 10
+var warnLevel = 20
+var errorLevel = 30
+
+var level int = 0
+
 func currentTimeInString() string {
 	currentDate := time.Now()
 
@@ -18,10 +25,39 @@ func currentTimeInString() string {
 	return formattedCurrentDate
 }
 
+func SetLevel(Level string) {
+	switch Level {
+	case "DEBUG":
+		level = debugLevel
+	case "INFO":
+		level = infoLevel
+	case "WARN":
+		level = warnLevel
+	case "ERROR":
+		level = errorLevel
+	}
+}
+
 func Info(message string) {
-	fmt.Println(currentTimeInString() + "[" + INFO + "]: " + message)
+	if level <= infoLevel {
+		fmt.Println(currentTimeInString() + "[" + INFO + "]: " + message)
+	}
 }
 
 func Debug(message string) {
-	fmt.Println(currentTimeInString() + "[" + DEBUG + "]: " + message)
+	if level <= debugLevel {
+		fmt.Println(currentTimeInString() + "[" + DEBUG + "]: " + message)
+	}
+}
+
+func Warn(message string) {
+	if level <= warnLevel {
+		fmt.Println(currentTimeInString() + "[" + WARN + "]: " + message)
+	}
+}
+
+func Error(message string) {
+	if level <= errorLevel {
+		fmt.Println(currentTimeInString() + "[" + ERROR + "]: " + message)
+	}
 }
