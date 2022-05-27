@@ -3,31 +3,31 @@ package logging
 import "fmt"
 
 func Info(message string) {
-	if level <= infoLevel {
-		fmt.Println(currentTimeInString() + "[" + INFO + "]: " + message)
+	if level <= INFO.level {
+		fmt.Println(currentTimeInString() + "[" + INFO.name + "]: " + message)
 	}
 }
 
 func Debug(message string) {
-	if level <= debugLevel {
-		fmt.Println(currentTimeInString() + "[" + DEBUG + "]: " + message)
+	if level <= DEBUG.level {
+		fmt.Println(currentTimeInString() + "[" + DEBUG.name + "]: " + message)
 	}
 }
 
 func Warn(message string) {
-	if level <= warnLevel {
-		fmt.Println(currentTimeInString() + "[" + WARN + "]: " + message)
+	if level <= WARN.level {
+		fmt.Println(currentTimeInString() + "[" + WARN.name + "]: " + message)
 	}
 }
 
 func Error(message string) {
-	if level <= errorLevel {
-		fmt.Println(currentTimeInString() + "[" + ERROR + "]: " + message)
+	if level <= ERROR.level {
+		fmt.Println(currentTimeInString() + "[" + ERROR.name + "]: " + message)
 	}
 }
 
 func Critical(message string) {
-	if level <= criticalLevel {
-		fmt.Println(currentTimeInString() + "[" + CRITICAL + "]: " + message)
+	if level <= CRITICAL.level {
+		fmt.Println(currentTimeInString() + "[" + CRITICAL.name + "]: " + message)
 	}
 }

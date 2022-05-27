@@ -4,17 +4,16 @@ import (
 	"time"
 )
 
-var DEBUG = "DEBUG"
-var INFO = "INFO"
-var WARN = "WARN"
-var ERROR = "ERROR"
-var CRITICAL = "CRITICAL"
+type Level struct {
+	name  string
+	level int
+}
 
-var debugLevel = 0
-var infoLevel = 10
-var warnLevel = 20
-var errorLevel = 30
-var criticalLevel = 40
+var DEBUG = Level{"DEBUG", 0}
+var INFO = Level{"INFO", 10}
+var WARN = Level{"WARNING", 20}
+var ERROR = Level{"ERROR", 30}
+var CRITICAL = Level{"CRITICAL", 40}
 
 var level int = 0
 
@@ -26,18 +25,18 @@ func currentTimeInString() string {
 	return formattedCurrentDate
 }
 
-func SetLevel(Level string) {
-	switch Level {
-	case "DEBUG":
-		level = debugLevel
-	case "INFO":
-		level = infoLevel
-	case "WARN":
-		level = warnLevel
-	case "ERROR":
-		level = errorLevel
-	case "CRITICAL":
-		level = criticalLevel
+func SetLevel(selectedLevel Level) {
+	switch selectedLevel {
+	case DEBUG:
+		level = DEBUG.level
+	case INFO:
+		level = INFO.level
+	case WARN:
+		level = WARN.level
+	case ERROR:
+		level = ERROR.level
+	case CRITICAL:
+		level = CRITICAL.level
 	default:
 		return
 	}
